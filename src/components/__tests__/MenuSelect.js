@@ -220,21 +220,11 @@ describe('default render', () => {
 
 describe('custom default render', () => {
   const defaultScopedSlots = `
-    <select
-      slot-scope="{ items, canRefine, refine }"
-      @change="refine($event.currentTarget.value)"
-      :disabled="!canRefine"
+    <template
+      slot-scope="{ label, count }"
     >
-      <option value="">All</option>
-      <option
-        v-for="item in items"
-        :key="item.value"
-        :value="item.value"
-        :selected="item.isRefined"
-      >
-        {{item.label}}
-      </option>
-    </select>
+        {{ label }} -- {{ count }}
+    </template>
   `;
 
   it('renders correctly', () => {
@@ -249,7 +239,7 @@ describe('custom default render', () => {
     const wrapper = mount(MenuSelect, {
       propsData: props,
       scopedSlots: {
-        default: defaultScopedSlots,
+        item: defaultScopedSlots,
       },
     });
 

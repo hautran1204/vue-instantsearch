@@ -29,6 +29,14 @@ sortBy | `string[]|function` | `['name:asc']` | How to sort refinements. Possibl
 transformItems | `(items: object[]) => object[]` | `x => x` | Function which receives the items, which will be called before displaying them. Should return a new array with the same shape as the original array. Useful for mapping over the items to transform, remove or reorder them | -
 classNames | Object | | Override class names | no
 
+## Slots
+
+Name | Scope | Description
+---|---|---
+item | `{ item: { label: String, value: String, count: Number } }` | Slot to override the text inside a single `<option>`
+
+There is no slot to override the whole DOM output. For that use case, use a `<ais-menu>`.
+
 ## CSS classes
 
 Here's a list of CSS classes exposed by this widget. To better understand the underlying
